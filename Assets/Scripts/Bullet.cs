@@ -11,5 +11,9 @@ public class Bullet : MonoBehaviour
             Debug.Log("You hit" + collision.gameObject.name);
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.transform.parent.gameObject);
+        }
     }
 }
