@@ -1471,6 +1471,9 @@ MonoBehaviour:
   firePoint: {fileID: 1228941443}
   bulletSpeed: 8
   bulletLifetime: 2
+  maxAmmo: 30
+  currentAmmo: -1
+  reloadTime: 2
 --- !u!1 &1663280896
 GameObject:
   m_ObjectHideFlags: 0
