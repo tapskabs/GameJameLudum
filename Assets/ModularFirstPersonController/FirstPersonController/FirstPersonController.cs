@@ -8,15 +8,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
+using UnityEngine.Audio;
+
+
 
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
     using System.Net;
 #endif
 
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
+    AudioMixerGroup footstepsSFX;
+    AudioSource JumpSFX;
+
 
     #region Camera Movement Variables
 
@@ -134,6 +141,8 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        footstepsSFX = GetComponent<AudioMixerGroup>();
+        JumpSFX = GetComponent<AudioSource>();
 
         crosshairObject = GetComponentInChildren<Image>();
 
@@ -452,6 +461,8 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
+
+            //footstepsSFX.Play();
         }
         else
         {
@@ -466,6 +477,7 @@ public class FirstPersonController : MonoBehaviour
         {
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
+            JumpSFX.Play();
         }
 
         // When crouched and using toggle system, will uncrouch for a jump

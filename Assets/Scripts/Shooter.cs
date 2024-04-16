@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Shooter : MonoBehaviour
 {
     public GameObject bulletPrefab; // Reference to the bullet prefab
@@ -13,6 +14,7 @@ public class Shooter : MonoBehaviour
     public int currentAmmo = -1;
     public float reloadTime = 2f;
     private bool isReloading = false;
+    AudioSource ak_shootingSFX;
     // Update is called once per frame
 
     private void Start()
@@ -23,6 +25,8 @@ public class Shooter : MonoBehaviour
         {
             currentAmmo = maxAmmo;
         }
+
+        ak_shootingSFX = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -35,6 +39,7 @@ public class Shooter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Fire(); // Call the Fire method
+            ak_shootingSFX.Play();
         }
 
     }
