@@ -12,14 +12,14 @@ public class AImovement : MonoBehaviour
     Animator animator;
     float timer = 0.4f;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();    
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         timer -= Time.deltaTime;
